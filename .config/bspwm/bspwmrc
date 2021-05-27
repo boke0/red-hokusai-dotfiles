@@ -7,17 +7,7 @@ feh --bg-fill $HOME/.config/feh/wallpaper.jpg &
 pgrep -x sxhkd > /dev/null || sxhkd &
 export AWT_TOOLKIT=MToolkit
 
-monitors=(`xrandr | grep "connected" | awk '{ print$1 }' | xargs`)
-
-if [ ${#monitors[@]} -eq 1 ]; then
-    bspc monitor ${monitors[0]} -d 壹 貳 參 肆 伍 陸 柒 捌 玖 拾
-    polybar both &
-else
-    bspc monitor ${monitors[0]} -d 壹 貳 參 肆 伍
-    bspc monitor ${monitors[1]} -d 陸 柒 捌 玖 拾
-    polybar left &
-    polybar right &
-fi
+monitors=(`xrandr | grep "connected" | grep -v "disconnected" | awk '{ print$1 }' | xargs`)
 
 bspc config border_width         0
 bspc config window_gap          24
@@ -31,5 +21,15 @@ bspc rule -a Chromium desktop='^2'
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
+
+if [ ${#monitors[@]} -eq 1 ]; then
+    bspc monitor ${monitors[0]} -d 壹 貳 參 肆 伍 陸 柒 捌 玖 拾
+    polybar both &
+else
+    bspc monitor ${monitors[0]} -d 壹 貳 參 肆 伍
+    bspc monitor ${monitors[1]} -d 陸 柒 捌 玖 拾
+    polybar left &
+    polybar right &
+fi
 
 compton

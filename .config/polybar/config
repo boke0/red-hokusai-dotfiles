@@ -149,7 +149,6 @@ border-left-size = 0
 ;----------;
 
 bottom = false
-monitor = DVI-D-0
 wm-restack = none
 override-redirect = false
 
