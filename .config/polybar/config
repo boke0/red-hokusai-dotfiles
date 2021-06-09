@@ -39,7 +39,7 @@ border-left-size = 0
 ;----------;
 
 bottom = false
-monitor = HDMI-A-0
+monitor = ${env:MONITOR:}
 wm-restack = none
 override-redirect = false
 
@@ -94,7 +94,7 @@ border-left-size = 0
 ;----------;
 
 bottom = false
-monitor = DVI-D-0
+monitor = ${env:MONITOR:}
 wm-restack = none
 override-redirect = false
 

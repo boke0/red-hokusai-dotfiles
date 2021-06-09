@@ -28,8 +28,8 @@ if [ ${#monitors[@]} -eq 1 ]; then
 else
     bspc monitor ${monitors[0]} -d 壹 貳 參 肆 伍
     bspc monitor ${monitors[1]} -d 陸 柒 捌 玖 拾
-    polybar left &
-    polybar right &
+    MONITOR=${monitors[0]} polybar left &
+    MONITOR=${monitors[1]} polybar right &
 fi
 
 compton
