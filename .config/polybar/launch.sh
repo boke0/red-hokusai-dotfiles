@@ -1,5 +1,1 @@
-#!/bin/sh
-
-killall -q polybar
-while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
-polybar white&
+/home/boke0/Works/i3-hokusai-red/.config/polybar/launch.sh
